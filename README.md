@@ -18,11 +18,12 @@ In Card Quiz:
 
 * Make sure `yarn` is installed
 * `git clone https://github.com/caco-jr/mobile-flashcards.git`
-* `cd Mobile-Flashcards/`
+* `cd mobile-flashcards/`
 * `yarn install`
 * `yarn start`
 * Follow instructions to open Android or iOS simulator on PC or phone.
 
 For more instructions follow this [Guide](https://facebook.github.io/react-native/docs/getting-started.html) to launch this app using Expo on your ios device
 
-Thanks! Carlos Costa
+Thanks!
+Carlos Costa
