@@ -4,7 +4,7 @@ import { StackNavigator } from 'react-navigation'
 import Tabs from './components/Tabs'
 import CustomStatusBar from './components/CustomStatusBar'
 import { white, gray, blue } from './utils/colors'
-import { getDecks } from './utils/api'
+import { getDecks, saveDeckTitle } from './utils/api'
 import { objectToArray } from './utils/helpers'
 
 mainNavOptions = {
@@ -30,14 +30,24 @@ class App extends Component {
   }
 
   componentDidMount() {
-    getDecks()
+    this.handleDecks();
+  }
+
+  handleDecks = () => {
+    return getDecks()
       .then(decks => this.setState({ decks: objectToArray(decks) }))
+  }
+
+  submitDeck = (deckTitle) => {
+    return saveDeckTitle(deckTitle)
+      .then(this.handleDecks)
   }
 
   render() {
     const { decks } = this.state;
     screenProps = {
       decks,
+      submitDeck: this.submitDeck,
     }
 
     return (

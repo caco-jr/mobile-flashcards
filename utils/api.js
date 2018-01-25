@@ -17,3 +17,18 @@ export const getDeck = (deckTitle) => {
             return JSON.parse(deck)[deckTitle]
         })
 }
+
+
+// Add a new deck
+export const saveDeckTitle = (deckTitle) => {
+    deck = {
+        [deckTitle]: {
+            title: deckTitle,
+            cards: []
+        }
+    }
+    return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(deck))
+        .then(() => {
+            getDecks()
+        })
+}

@@ -19,7 +19,14 @@ class AddDeck extends Component {
     return this.setState({ input })
   }
 
-  //TODO: Fazer o método onPress
+  onPress = () => {
+    const { submitDeck } = this.props.screenProps
+    submitDeck(this.state.val)
+      .then(() => {
+        this.props.navigation.navigate('DeckItemDetails', { deck: { title: this.state.input } });
+        this.setState({ input: '' });
+      })
+  }
 
   render() {
     const { input } = this.state;
@@ -40,6 +47,7 @@ class AddDeck extends Component {
             placeHolder='Deck Label' />
 
           <TouchableOpacity
+            onPress={this.onPress}
             style={[styles.button, styles.center]}>
             <Text style={styles.buttonText}>CREATE</Text>
           </TouchableOpacity>
