@@ -14,7 +14,6 @@ export const DeckItem = ({ deck, nav, screenProps }) => {
                 <Text style={styles.titleText}>{deck.item.title}</Text>
             </View>
             <View style={styles.endMenu}>
-                {/* TODO: Fazer o removeDeck */}
                 <TouchableOpacity
                     onPress={() => screenProps.removeDeck(deck.item.title)}>
                     <Ionicons style={{ margin: 4 }} color={white} size={30} name='ios-trash-outline' />
