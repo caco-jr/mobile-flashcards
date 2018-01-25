@@ -1,16 +1,28 @@
-# Mobile Flash Cards aka UdaciCards Project for React NanoDegree
-This is a mobile ios app built using React Native and was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
+# Mobile Flashcards for React NanoDegree
 
-* Please note this has only been tested on ios using Expo.
+## Test
 
-## How to install this project
+The application was tested on iPhone 8 and Moto X2.
 
-1. Clone or fork this repo and then
+## App Usage
 
-   - `npm install`
-   - `yarn start` or `npm start`
+In Deck Main or Deck Detail:
 
-2. Follow this [Guide](https://facebook.github.io/react-native/docs/getting-started.html) to launch this app using Expo on your ios device
- - Please Note that if you would like to use a simulator, the above guide will show you how, the setup will be different, for example you wouldnt use 'npm start' or 'yarn start' but  would use 'npm run ios'(mac os only) instead.
+* Swiping deck or card for edit or delete.
 
-Thanks! Brant Goddard
+In Card Quiz:
+* Tapping cards for the answer.
+* Swiping cards for right or wrong.
+
+## Run
+
+* Make sure `yarn` is installed
+* `git clone https://github.com/caco-jr/mobile-flashcards.git`
+* `cd Mobile-Flashcards/`
+* `yarn install`
+* `yarn start`
+* Follow instructions to open Android or iOS simulator on PC or phone.
+
+For more instructions follow this [Guide](https://facebook.github.io/react-native/docs/getting-started.html) to launch this app using Expo on your ios device
+
+Thanks! Carlos Costa
