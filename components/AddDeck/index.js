@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { red, gray, darkGray, white, blue, pink } from '../../utils/colors'
+import { gray, darkGray, white, blue, pink } from '../../utils/colors'
 
 class AddDeck extends Component {
   state = {
