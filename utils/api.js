@@ -10,7 +10,7 @@ export const getDecks = () => {
         })
 }
 
-// Get a especific Deck
+// Get a specific Deck
 export const getDeck = (deckTitle) => {
     return AsyncStorage.getItem(DECK_STORAGE_KEY)
         .then(deck => {
@@ -32,7 +32,7 @@ export const saveDeckTitle = (deckTitle) => {
         })
 }
 
-// Remove a especific Deck
+// Remove a specific Deck
 export const removeDeck = (deckTitle) => {
     return getDecks()
         .then(decks => {

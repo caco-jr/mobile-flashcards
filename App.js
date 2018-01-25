@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { StackNavigator } from 'react-navigation'
-import Tabs from './components/Tabs'
 import CustomStatusBar from './components/CustomStatusBar'
 import { white, gray, blue } from './utils/colors'
 import { getDecks, saveDeckTitle, removeDeck } from './utils/api'
 import { objectToArray } from './utils/helpers'
+import Tabs from './components/Tabs'
+import DeckItemDetails from './components/DeckItemDetails'
 
 mainNavOptions = {
   headerMode: 'float',
@@ -20,6 +21,12 @@ mainNavOptions = {
 MainNav = StackNavigator({
   Home: {
     screen: Tabs,
+  },
+  DeckItemDetails: {
+    screen: DeckItemDetails,
+    navigationOptions: {
+      title: 'Deck',
+    },
   },
 }, mainNavOptions)
 
