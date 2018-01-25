@@ -7,6 +7,7 @@ import { getDecks, saveDeckTitle, removeDeck } from './utils/api'
 import { objectToArray } from './utils/helpers'
 import Tabs from './components/Tabs'
 import DeckItemDetails from './components/DeckItemDetails'
+import AddCard from './components/AddCard'
 
 mainNavOptions = {
   headerMode: 'float',
@@ -26,6 +27,12 @@ MainNav = StackNavigator({
     screen: DeckItemDetails,
     navigationOptions: {
       title: 'Deck',
+    },
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      title: 'Add Card',
     },
   },
 }, mainNavOptions)
