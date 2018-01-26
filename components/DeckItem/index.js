@@ -4,21 +4,27 @@ import { white, red, darkGray } from '../../utils/colors'
 import { Ionicons } from '@expo/vector-icons'
 
 export const DeckItem = ({ deck, nav, screenProps }) => {
+    console.log(deck)
+
     return (
         <TouchableOpacity style={styles.itemCont}
             onPress={() => nav.navigate('DeckItemDetails', { deck: deck.item })}>
+
             <View style={styles.icon}>
                 <Ionicons style={styles.icon} color={white} size={60} name='ios-card-outline' />
             </View>
+
             <View style={styles.info}>
                 <Text style={styles.titleText}>{deck.item.title}</Text>
             </View>
+
             <View style={styles.endMenu}>
                 <TouchableOpacity
                     onPress={() => screenProps.removeDeck(deck.item.title)}>
                     <Ionicons style={{ margin: 4 }} color={white} size={30} name='ios-trash-outline' />
                 </TouchableOpacity>
             </View>
+
         </TouchableOpacity>
     )
 }
