@@ -8,6 +8,8 @@ import { objectToArray } from './utils/helpers'
 import Tabs from './components/Tabs'
 import DeckItemDetails from './components/DeckItemDetails'
 import AddCard from './components/AddCard'
+import Quiz from './components/Quiz'
+import Score from './components/Score'
 
 mainNavOptions = {
   headerMode: 'float',
@@ -33,6 +35,18 @@ MainNav = StackNavigator({
     screen: AddCard,
     navigationOptions: {
       title: 'Add Card',
+    },
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      title: 'Quiz',
+    },
+  },
+  Score: {
+    screen: Score,
+    navigationOptions: {
+      header: null,
     },
   },
 }, mainNavOptions)
