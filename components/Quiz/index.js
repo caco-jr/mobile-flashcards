@@ -123,9 +123,17 @@ class Quiz extends Component {
                 <Animated.View style={[styles.cardOuter, animStyle]}>
                     <Animated.View style={[styles.cardInner, { opacity }]}>
                         <View style={styles.cardCountCont}>
-                            <Text style={styles.cardCountText}>{card + 1}</Text>
-                            <Text style={styles.cardCountText}>of</Text>
-                            <Text style={styles.cardCountText}>{cardCount}</Text>
+                            <Text style={styles.cardCountText}>
+                                {card + 1}
+                            </Text>
+
+                            <Text style={styles.cardCountText}>
+                                of
+                            </Text>
+
+                            <Text style={styles.cardCountText}>
+                                {cardCount}
+                            </Text>
                         </View>
 
                         <View style={styles.info}>
@@ -152,7 +160,7 @@ class Quiz extends Component {
                             name={Platform.OS === 'ios' ? 'ios-happy-outline' : 'md-happy'}
                             size={80}
                             color={'green'} />
-                        <Text style={styles.textVote}> Got it! </Text>
+                        <Text style={styles.textVote}> Correct </Text>
 
                     </TouchableOpacity>
 
@@ -164,7 +172,7 @@ class Quiz extends Component {
                             name={Platform.OS === 'ios' ? 'ios-sad-outline' : 'md-sad'}
                             size={80}
                             color={red} />
-                        <Text style={styles.textVote} >Maybe Next Time!</Text>
+                        <Text style={styles.textVote} > Incorrect </Text>
 
                     </TouchableOpacity>
                 </View>

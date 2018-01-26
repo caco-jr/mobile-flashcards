@@ -1,13 +1,13 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { lightGray, black } from '../../utils/colors'
+import { lightGray, black, white } from '../../utils/colors'
 import CardCount from '../CardCount'
 
-const StackedCards = ({ cards, topCardTitle, titleStyle }) => {
+const DeckInfo = ({ cards, topCardTitle, titleStyle }) => {
     return (
         <View style={styles.container}>
             <View style={[styles.deck, { flex: 1, alignItems: 'stretch' }]}>
-                <View style={{ backgroundColor: lightGray, height: 80, alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ backgroundColor: white, height: 80, alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={[{ color: black }, titleStyle]} > {topCardTitle} </Text>
                 </View>
 
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default StackedCards
+export default DeckInfo

@@ -6,7 +6,7 @@ import {
     StyleSheet,
 } from 'react-native'
 import { red, gray, white, black } from '../../utils/colors'
-import StackedCards from '../StackedCards'
+import DeckInfo from '../DeckInfo'
 import ThumbButtons from '../ThumbButtons'
 
 class DeckItemDetails extends Component {
@@ -27,7 +27,7 @@ class DeckItemDetails extends Component {
 
         return (
             <View style={styles.container}>
-                <StackedCards
+                <DeckInfo
                     topCardTitle={title}
                     cards={cards}
                     titleStyle={styles.title} />
