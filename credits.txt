@@ -1,0 +1,30 @@
+# Sites that helped me a lot during the project
+
+# UI Inspiration Insight
+https://www.uplabs.com/search?q=cards
+https://muz.li/
+
+# TextInput
+https://stackoverflow.com/questions/44416541/react-native-difference-between-onchange-vs-onchangetext-of-textinput
+
+# AsyncStorage
+https://facebook.github.io/react-native/docs/asyncstorage.html#methods
+
+# Helpers Icons
+https://expo.github.io/vector-icons/
+
+# React Native
+https://facebook.github.io/react-native/
+
+#Tab Animation
+https://github.com/react-community/react-navigation/issues/2202
+https://github.com/react-native-community/react-native-tab-view/issues/173
+
+# Color Pallette
+https://www.webdesignrankings.com/resources/lolcolors/
+
+# React transform
+https://facebook.github.io/react-vr/docs/3dcoordinates-and-transforms.html
+
+# rotate Y axis for flip animation
+https://www.webascender.com/blog/css-3d-card-flip-animation-tutorial/
