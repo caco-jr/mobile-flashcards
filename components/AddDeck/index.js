@@ -21,7 +21,7 @@ class AddDeck extends Component {
 
   onPress = () => {
     const { submitDeck } = this.props.screenProps
-    submitDeck(this.state.val)
+    submitDeck(this.state.input)
       .then(() => {
         this.props.navigation.navigate('DeckItemDetails', { deck: { title: this.state.input } });
         this.setState({ input: '' });

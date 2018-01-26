@@ -80,11 +80,12 @@ class App extends Component {
   submitCard = (deck, card, navigation) => {
     return addCardToDeck(deck.title, card)
       .then(() => navigation.dispatch(resetToDeck(deck)))
-      .then(this.getDecksAndSetState)
+      .then(this.handleDecks)
   }
 
   render() {
     const { decks } = this.state;
+
     screenProps = {
       decks,
       submitDeck: this.submitDeck,
