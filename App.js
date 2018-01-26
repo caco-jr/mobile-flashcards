@@ -95,7 +95,7 @@ class App extends Component {
 
     return (
       <View style={{ flex: 1, justifyContent: 'center' }}>
-        <CustomStatusBar backgroundColor={blue} barStyle='light-content' />
+        <CustomStatusBar backgroundColor={gray} barStyle='light-content' />
         <MainNav screenProps={screenProps} />
       </View>
     )
