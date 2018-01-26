@@ -14,22 +14,24 @@ class DeckItemDetails extends Component {
         deck: {}
     }
 
-    componentDidMount() {
+    componentWillReceiveProps(nextProps) {
         const { deck } = this.props.navigation.state.params;
 
-        getDeck(deck.title)
-            .then((freshDeck) => this.setState({ deck: freshDeck }))
+        if (deck !== nextProps.navigation.state.params.deck) {
+            getDeck(deck.title)
+                .then((freshDeck) => this.setState({ deck: freshDeck }))
+        }
     }
 
     render() {
         const { deck } = this.state
         const { title, cards } = deck
+
         return (
             <View style={styles.container}>
                 <StackedCards
                     topCardTitle={title}
                     cards={cards} />
-
 
                 <View style={{ flex: 1 }} >
                     <ThumbButtons
