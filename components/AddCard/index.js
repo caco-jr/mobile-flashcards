@@ -7,7 +7,7 @@ import {
     View,
     TouchableOpacity,
 } from 'react-native'
-import { red, gray, darkGray, blue, white } from '../../utils/colors'
+import { gray, darkGray, blue, white } from '../../utils/colors'
 import { MaterialIcons } from '@expo/vector-icons'
 import ThumbButtons from '../ThumbButtons'
 
@@ -20,7 +20,9 @@ class AddCard extends Component {
     onPress = () => {
         const { navigation } = this.props
         const { deck } = navigation.state.params
+
         this.props.screenProps.submitCard(deck, this.state, navigation)
+
         return this.setState({ question: '', answer: '' })
     }
 

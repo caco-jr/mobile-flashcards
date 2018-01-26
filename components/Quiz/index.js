@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { getDeck } from '../../utils/api'
 import { setLocalNotification, clearNotifications } from '../../utils/helpers'
 import Score from '../Score'
-import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Animated, Platform } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import { red, gray, darkGray, white } from '../../utils/colors'
+import { red, gray, darkGray, white, blue, pink, lightGray, black } from '../../utils/colors'
 
 class Quiz extends Component {
     state = {
@@ -22,8 +22,8 @@ class Quiz extends Component {
     }
 
     componentDidMount() {
-        const { deck } = this.props.navigation.state.params
-        // ensures we dont get a stale deck
+        const { deck } = this.props.navigation.state.params;
+
         getDeck(deck.title)
             .then((freshDeck) => {
                 this.setState({
@@ -34,22 +34,23 @@ class Quiz extends Component {
                 })
             })
 
-        // remove Notification to take Quiz
-        // then add a new for tomorrow
         clearNotifications()
             .then(setLocalNotification)
     }
 
     passOrFail = (correct) => {
-        let { card, cardCount, deck, transX, rightAnswers, answer, question } = this.state
-        card += 1
-        cardCount -= 1
+        let { card, cardCount, deck, transX, rightAnswers, answer, question } = this.state;
+        card += 1;
+        cardCount -= 1;
+
         if (correct) {
             rightAnswers += 1
         }
+
         if (card > cardCount) {
             return this.setState({ quizComplete: true, rightAnswers })
         }
+
         if (card <= cardCount) {
             question = deck.cards[card].question
             answer = deck.cards[card].answer
@@ -72,24 +73,28 @@ class Quiz extends Component {
     }
 
     flipCard = () => {
-        const { flip, opacity, showAnswer } = this.state
+        const { flip, opacity, showAnswer } = this.state;
+
         Animated.sequence([
             Animated.timing(opacity, { toValue: 0, duration: 300 }),
             Animated.timing(flip, { toValue: 180, duration: 300 }),
-        ]).start(() => {
-            this.setState({ showAnswer: !showAnswer })
-            Animated.sequence([
-                Animated.timing(flip, { toValue: 0, duration: 0 }),
-                Animated.timing(opacity, { toValue: 1, duration: 300 }),
-            ]).start()
-        })
+        ])
+            .start(() => {
+                this.setState({ showAnswer: !showAnswer })
+                Animated.sequence([
+                    Animated.timing(flip, { toValue: 0, duration: 0 }),
+                    Animated.timing(opacity, { toValue: 1, duration: 300 }),
+                ]).start()
+            })
     }
 
     componentDidUpdate() {
-        const { deck, transX, quizComplete } = this.state
+        const { deck, transX, quizComplete } = this.state;
+
         if (quizComplete) {
             return this.props.navigation.navigate('Score', { score: this.calcScore(), deck })
         }
+
         Animated.timing(transX, { toValue: 0, duration: 300 }).start()
     }
 
@@ -141,18 +146,26 @@ class Quiz extends Component {
                 <View style={styles.buttonCont}>
                     <TouchableOpacity
                         onPress={() => this.passOrFail(true)}
-                        style={styles.center}>
-                        <Text>Got it!</Text>
-                        <Ionicons name='ios-happy' size={80} color={'green'} />
-                    </TouchableOpacity>
+                        style={styles.buttonVote}>
 
-                    <Text>------------------</Text>
+                        <Ionicons
+                            name={Platform.OS === 'ios' ? 'ios-happy-outline' : 'md-happy'}
+                            size={80}
+                            color={'green'} />
+                        <Text style={styles.textVote}> Got it! </Text>
+
+                    </TouchableOpacity>
 
                     <TouchableOpacity
                         onPress={() => this.passOrFail(false)}
-                        style={styles.center}>
-                        <Ionicons name='ios-sad' size={80} color={red} />
-                        <Text>Maybe Next Time!</Text>
+                        style={styles.buttonVote}>
+
+                        <Ionicons
+                            name={Platform.OS === 'ios' ? 'ios-sad-outline' : 'md-sad'}
+                            size={80}
+                            color={red} />
+                        <Text style={styles.textVote} >Maybe Next Time!</Text>
+
                     </TouchableOpacity>
                 </View>
             </View>
@@ -161,6 +174,9 @@ class Quiz extends Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
     center: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -174,20 +190,18 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        flexDirection: 'row',
     },
     cardOuter: {
         flex: 1,
         borderWidth: 1,
-        borderColor: darkGray,
+        borderColor: gray,
         borderRadius: 4,
-        margin: 3,
-        shadowColor: gray,
-        shadowOffset: {
-            width: 2,
-            height: 2,
-        },
-        shadowOpacity: 0.4,
-        shadowRadius: 1,
+        marginLeft: 15,
+        marginRight: 15,
+        marginBottom: 30,
+        backgroundColor: white,
+        borderRadius: 5,
     },
     cardInner: {
         flex: 1,
@@ -195,26 +209,32 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     cardCountCont: {
-        backgroundColor: gray,
-        borderColor: gray,
-        borderWidth: 1,
-        borderRadius: 30,
-        margin: 4,
-        minWidth: 20,
+        backgroundColor: lightGray,
+        borderTopLeftRadius: 5,
+        borderBottomLeftRadius: 5,
+        minWidth: 35,
         justifyContent: 'center',
         alignItems: 'center',
     },
     cardCountText: {
-        color: white,
-    },
-    container: {
-        flex: 1,
+        color: black,
     },
     countBar: {
         justifyContent: 'center',
         alignItems: 'center',
-        height: 30,
-        backgroundColor: red,
+        height: 40,
+        backgroundColor: pink,
+        marginBottom: 15,
+    },
+    buttonVote: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 15,
+        marginRight: 15,
+    },
+    textVote: {
+        textAlign: 'center',
+        fontSize: 18,
     },
     countBarText: {
         fontSize: 20,
