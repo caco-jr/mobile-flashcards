@@ -26,4 +26,3 @@ In Card Quiz:
 For more instructions follow this [Guide](https://facebook.github.io/react-native/docs/getting-started.html) to launch this app using Expo on your ios device
 
 Thanks!
-Carlos Costa
