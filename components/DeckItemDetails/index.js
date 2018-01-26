@@ -5,7 +5,7 @@ import {
     Text,
     StyleSheet,
 } from 'react-native'
-import { red, gray, white } from '../../utils/colors'
+import { red, gray, white, black } from '../../utils/colors'
 import StackedCards from '../StackedCards'
 import ThumbButtons from '../ThumbButtons'
 
@@ -14,13 +14,11 @@ class DeckItemDetails extends Component {
         deck: {}
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentDidMount() {
         const { deck } = this.props.navigation.state.params;
 
-        if (deck !== nextProps.navigation.state.params.deck) {
-            getDeck(deck.title)
-                .then((freshDeck) => this.setState({ deck: freshDeck }))
-        }
+        getDeck(deck.title)
+            .then((freshDeck) => this.setState({ deck: freshDeck }))
     }
 
     render() {
@@ -31,12 +29,14 @@ class DeckItemDetails extends Component {
             <View style={styles.container}>
                 <StackedCards
                     topCardTitle={title}
-                    cards={cards} />
+                    cards={cards}
+                    titleStyle={styles.title} />
 
                 <View style={{ flex: 1 }} >
                     <ThumbButtons
-                        textOne={'Add Card'}
-                        textTwo={'Pop Quiz'}
+                        textOne={'New card'}
+                        textTwo={'Start Quiz'}
+                        styleBox={styles.buttonBox}
                         onPressOne={() => this.props.navigation.navigate('AddCard', { deck })}
                         onPressTwo={() => this.props.navigation.navigate('Quiz', { deck })}
                         hideButtonTwo={cards && !cards.length > 0} />
@@ -53,8 +53,12 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 24,
-        color: white,
+        color: black,
     },
+    buttonBox: {
+        flexDirection: 'row',
+        flex: 1,
+    }
 })
 
 export default DeckItemDetails

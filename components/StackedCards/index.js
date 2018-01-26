@@ -1,14 +1,14 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { red, gray, white } from '../../utils/colors'
+import { lightGray, black } from '../../utils/colors'
 import CardCount from '../CardCount'
 
 const StackedCards = ({ cards, topCardTitle, titleStyle }) => {
     return (
         <View style={styles.container}>
             <View style={[styles.deck, { flex: 1, alignItems: 'stretch' }]}>
-                <View style={[{ backgroundColor: red, height: 80, alignItems: 'center', justifyContent: 'center' }, titleStyle]}>
-                    <Text> {topCardTitle} </Text>
+                <View style={{ backgroundColor: lightGray, height: 80, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={[{ color: black }, titleStyle]} > {topCardTitle} </Text>
                 </View>
 
                 <View style={[styles.container, { justifyContent: 'center', alignSelf: 'center' }]}>

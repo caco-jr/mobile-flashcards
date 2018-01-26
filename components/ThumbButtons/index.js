@@ -1,29 +1,36 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { red, white, darkGray } from '../../utils/colors'
-import { Ionicons, FontAwesome } from '@expo/vector-icons'
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native'
+import { white, darkGray, pink } from '../../utils/colors'
+import { EvilIcons, Ionicons } from '@expo/vector-icons'
 
 class ThumbButtons extends Component {
     render() {
-        const { hideButtonTwo, onPressOne, onPressTwo, textOne, textTwo, } = this.props
+        const { hideButtonTwo, onPressOne, onPressTwo, textOne, textTwo, styleBox } = this.props;
         return (
 
-            <View style={styles.container}>
+            <View style={styleBox || styles.container}>
                 <View >
                     <TouchableOpacity style={styles.button}
                         onPress={onPressOne}>
                         <Text style={styles.text}>{textOne}</Text>
-                        <Ionicons name='ios-add-circle' size={80} color={red} />
+                        <Ionicons
+                            name={Platform.OS === 'ios' ? 'ios-add-circle-outline' : 'md-add-circle'}
+                            size={80}
+                            color={pink} />
                     </TouchableOpacity>
                 </View>
-                <View>
+
+                <View >
                     {
                         !hideButtonTwo &&
                         <TouchableOpacity style={styles.button}
-                            onPress={onPressTwo}
-                        >
+                            onPress={onPressTwo}>
                             <Text style={styles.text}>{textTwo}</Text>
-                            <FontAwesome name='question-circle' size={80} color={red} />
+
+                            <EvilIcons
+                                name='question'
+                                size={100}
+                                color={pink} />
                         </TouchableOpacity>
                     }
                 </View>
@@ -37,11 +44,14 @@ styles = StyleSheet.create({
         flex: 1,
     },
     button: {
+        flex: 1,
         justifyContent: 'center',
+        margin: 15,
     },
     text: {
         color: darkGray,
         fontSize: 18,
+        marginBottom: 5,
     }
 })
 
