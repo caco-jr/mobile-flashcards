@@ -7,6 +7,7 @@ import {
 } from 'react-native'
 import { red, gray, white } from '../../utils/colors'
 import StackedCards from '../StackedCards'
+import ThumbButtons from '../ThumbButtons'
 
 class DeckItemDetails extends Component {
     state = {
@@ -28,6 +29,16 @@ class DeckItemDetails extends Component {
                 <StackedCards
                     topCardTitle={title}
                     cards={cards} />
+
+
+                <View style={{ flex: 1 }} >
+                    <ThumbButtons
+                        textOne={'Add Card'}
+                        textTwo={'Pop Quiz'}
+                        onPressOne={() => this.props.navigation.navigate('AddCard', { deck })}
+                        onPressTwo={() => this.props.navigation.navigate('Quiz', { deck })}
+                        hideButtonTwo={cards && !cards.length > 0} />
+                </View>
             </View>
         )
     }

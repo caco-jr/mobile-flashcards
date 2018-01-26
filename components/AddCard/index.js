@@ -15,15 +15,18 @@ class AddCard extends Component {
         question: '',
         answer: '',
     }
+
     onPress = () => {
         const { navigation } = this.props
         const { deck } = navigation.state.params
         this.props.screenProps.submitCard(deck, this.state, navigation)
         return this.setState({ question: '', answer: '' })
     }
+
     render() {
-        const { question, answer } = this.state
-        const { navigation } = this.props
+        const { question, answer } = this.state;
+        const { navigation } = this.props;
+
         return (
             <KeyboardAvoidingView behavior='padding' style={styles.centerStretch}>
                 <View style={styles.centerItems}>
@@ -45,12 +48,10 @@ class AddCard extends Component {
                     style={styles.input}
                     onChangeText={(text) => this.setState({ answer: text })} />
 
-                <KeyboardAvoidingView behavior='padding' style={styles.centerItems}>
-                    <ThumbButtons
-                        onPressOne={this.onPress}
-                        textOne={'Add Card'}
-                        hideButtonTwo={true} />
-                </KeyboardAvoidingView>
+                <ThumbButtons
+                    onPressOne={this.onPress}
+                    textOne={'Add Card'}
+                    hideButtonTwo={true} />
             </KeyboardAvoidingView>
         )
     }

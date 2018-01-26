@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import { StackNavigator } from 'react-navigation'
 import CustomStatusBar from './components/CustomStatusBar'
 import { white, gray, blue } from './utils/colors'
-import { getDecks, saveDeckTitle, removeDeck } from './utils/api'
+import { getDecks, saveDeckTitle, removeDeck, addCardToDeck } from './utils/api'
 import { objectToArray } from './utils/helpers'
 import Tabs from './components/Tabs'
 import DeckItemDetails from './components/DeckItemDetails'
@@ -62,12 +62,19 @@ class App extends Component {
       .then(this.handleDecks)
   }
 
+  submitCard = (deck, card, navigation) => {
+    return addCardToDeck(deck.title, card)
+      .then(() => navigation.dispatch(resetToDeck(deck)))
+      .then(this.getDecksAndSetState)
+  }
+
   render() {
     const { decks } = this.state;
     screenProps = {
       decks,
       submitDeck: this.submitDeck,
       removeDeck: this.removeDeck,
+      submitCard: this.submitCard,
     }
 
     return (

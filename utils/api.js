@@ -40,3 +40,12 @@ export const removeDeck = (deckTitle) => {
             AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(decks))
         })
 }
+
+// Add a card to a deck
+export const addCardToDeck = (deckTitle, card) => {
+    return getDeck(deckTitle)
+        .then((deck) => {
+            deck.cards.push(card)
+            return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({ [deckTitle]: deck }))
+        }).then(() => getDecks())
+}
