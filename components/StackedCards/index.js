@@ -10,6 +10,7 @@ const StackedCards = ({ cards, topCardTitle, titleStyle }) => {
                 <View style={[{ backgroundColor: red, height: 80, alignItems: 'center', justifyContent: 'center' }, titleStyle]}>
                     <Text> {topCardTitle} </Text>
                 </View>
+
                 <View style={[styles.container, { justifyContent: 'center', alignSelf: 'center' }]}>
                     <CardCount cards={cards} style={{ fontSize: 40 }} />
                 </View>

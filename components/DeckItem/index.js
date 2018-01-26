@@ -4,8 +4,6 @@ import { white, red, darkGray } from '../../utils/colors'
 import { Ionicons } from '@expo/vector-icons'
 
 export const DeckItem = ({ deck, nav, screenProps }) => {
-    console.log(deck)
-
     return (
         <TouchableOpacity style={styles.itemCont}
             onPress={() => nav.navigate('DeckItemDetails', { deck: deck.item })}>

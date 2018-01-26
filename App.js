@@ -4,7 +4,7 @@ import { StackNavigator } from 'react-navigation'
 import CustomStatusBar from './components/CustomStatusBar'
 import { white, gray, blue } from './utils/colors'
 import { getDecks, saveDeckTitle, removeDeck, addCardToDeck } from './utils/api'
-import { objectToArray } from './utils/helpers'
+import { objectToArray, setLocalNotification, resetToDeck } from './utils/helpers'
 import Tabs from './components/Tabs'
 import DeckItemDetails from './components/DeckItemDetails'
 import AddCard from './components/AddCard'
@@ -59,6 +59,7 @@ class App extends Component {
 
   componentDidMount() {
     this.handleDecks();
+    setLocalNotification();
   }
 
   handleDecks = () => {
