@@ -5,9 +5,7 @@ const CardCount = ({ style, cards }) => {
     const cardsLength = cards && cards.length
     return (
         <Text style={style || {}}>
-            {cardsLength}
-            Card
-            {(cardsLength > 1 || cardsLength === 0) && 's'}
+            {`${cardsLength} Card${(cardsLength > 1 || cardsLength === 0) && 's'}`}
         </Text>
     )
 }

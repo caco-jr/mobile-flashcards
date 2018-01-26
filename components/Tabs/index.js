@@ -11,12 +11,12 @@ const tabOptions = {
   },
   animationEnabled: true,
   tabBarOptions: {
-    activeTintColor: white,
+    activeTintColor: blue,
     inactiveTintColor: lightGray,
     style: {
       height: 56,
       padding: 4,
-      backgroundColor: blue,
+      backgroundColor: white,
     },
   },
 }

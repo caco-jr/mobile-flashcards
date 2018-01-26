@@ -1,25 +1,34 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { white, red, darkGray } from '../../utils/colors'
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native'
+import { white, lightGray, pink, black } from '../../utils/colors'
 import { Ionicons } from '@expo/vector-icons'
+import CardCount from '../CardCount'
 
-export const DeckItem = ({ deck, nav, screenProps }) => {
+const DeckItem = ({ deck, nav, screenProps }) => {
     return (
-        <TouchableOpacity style={styles.itemCont}
+        <TouchableOpacity style={styles.deckItem}
             onPress={() => nav.navigate('DeckItemDetails', { deck: deck.item })}>
 
-            <View style={styles.icon}>
-                <Ionicons style={styles.icon} color={white} size={60} name='ios-card-outline' />
+            <View>
+                <CardCount style={styles.subTitle} cards={deck.item.cards} />
             </View>
 
-            <View style={styles.info}>
-                <Text style={styles.titleText}>{deck.item.title}</Text>
+            <View>
+                <Text style={styles.titleText}>
+                    {deck.item.title}
+                </Text>
             </View>
 
-            <View style={styles.endMenu}>
+            <View>
                 <TouchableOpacity
                     onPress={() => screenProps.removeDeck(deck.item.title)}>
-                    <Ionicons style={{ margin: 4 }} color={white} size={30} name='ios-trash-outline' />
+
+                    <Ionicons
+                        style={{ margin: 4 }}
+                        color={black}
+                        size={30}
+                        name={Platform.OS === 'ios' ? 'ios-trash-outline' : 'md-trash'} />
+
                 </TouchableOpacity>
             </View>
 
@@ -28,44 +37,30 @@ export const DeckItem = ({ deck, nav, screenProps }) => {
 }
 
 const styles = StyleSheet.create({
-    itemCont: {
-        flex: 1,
+    deckItem: {
         height: 100,
-        flexDirection: 'row',
-        backgroundColor: red,
-        borderTopWidth: 1,
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
-        borderColor: darkGray,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-    },
-    icon: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 80,
-        padding: 8,
-    },
-    info: {
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-    },
-    endMenu: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'flex-end'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderBottomWidth: 1,
+        borderColor: lightGray,
+        backgroundColor: white,
+        padding: 15,
     },
     titleText: {
-        color: white,
         fontSize: 18,
         fontWeight: 'bold',
+        color: black
     },
     subTitle: {
-        color: white,
         borderWidth: 1,
         borderRadius: 8,
         padding: 8,
         margin: 4,
-        borderColor: white,
+        color: black,
+        borderColor: black,
     },
 })
+
+export default DeckItem
