@@ -1,8 +1,9 @@
 import React from 'react'
 import { View, Text, FlatList, StyleSheet } from 'react-native'
 import DeckItem from '../DeckItem'
-import { gray, red, white } from '../../utils/colors'
+import { gray, red, white, blue } from '../../utils/colors'
 import { FontAwesome } from '@expo/vector-icons'
+import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 
 const renderListItem = ({ deck, navigation, screenProps }) => {
     return <DeckItem nav={navigation} screenProps={screenProps} deck={deck} />
@@ -22,24 +23,31 @@ const Decks = ({ navigation, screenProps }) => {
                     renderItem={(deck) => renderListItem({ deck, navigation, screenProps })}
                     keyExtractor={keyExtractor} />
             </View>
-            : <Text> Add a New Deck </Text>
+            : <View style={styles.center} >
+                <SimpleLineIcons
+                    color={blue}
+                    size={90}
+                    name="emotsmile" />
+                <Text style={styles.emptyDecks} > Hey, let's start a new Deck </Text>
+            </View>
     )
 }
 
-styles = StyleSheet.create({
+const styles = StyleSheet.create({
     decks: {
         flex: 1,
     },
-    titleCard: {
+    center: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: white,
-        borderColor: gray,
-        borderWidth: 4,
-        borderRadius: 4,
-        margin: 3,
-    }
+    },
+    emptyDecks: {
+        fontSize: 24,
+        textAlign: 'center',
+        margin: 30,
+        color: gray,
+    },
 })
 
 export default Decks

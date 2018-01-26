@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { lightGray, black, white } from '../../utils/colors'
+import { lightGray, black, white, gray } from '../../utils/colors'
 import CardCount from '../CardCount'
 
 const DeckInfo = ({ cards, topCardTitle, titleStyle }) => {
@@ -12,7 +12,7 @@ const DeckInfo = ({ cards, topCardTitle, titleStyle }) => {
                 </View>
 
                 <View style={[styles.container, { justifyContent: 'center', alignSelf: 'center' }]}>
-                    <CardCount cards={cards} style={{ fontSize: 40 }} />
+                    <CardCount cards={cards} style={{ fontSize: 40, color: gray }} />
                 </View>
             </View>
         </View>
