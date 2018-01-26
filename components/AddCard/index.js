@@ -5,8 +5,9 @@ import {
     StyleSheet,
     TextInput,
     View,
+    TouchableOpacity,
 } from 'react-native'
-import { red, gray, darkGray } from '../../utils/colors'
+import { red, gray, darkGray, blue, white } from '../../utils/colors'
 import { MaterialIcons } from '@expo/vector-icons'
 import ThumbButtons from '../ThumbButtons'
 
@@ -28,61 +29,64 @@ class AddCard extends Component {
         const { navigation } = this.props;
 
         return (
-            <KeyboardAvoidingView behavior='padding' style={styles.centerStretch}>
-                <View style={styles.centerItems}>
-                    <MaterialIcons size={80} color={red} name='keyboard' />
+            <KeyboardAvoidingView behavior='padding' style={{ paddingLeft: 15, paddingRight: 15 }} >
+                <View style={styles.boxQuestion} >
                     <Text style={styles.text}>Question</Text>
+
+                    <TextInput
+                        value={question}
+                        style={styles.input}
+                        onChangeText={(text) => this.setState({ question: text })} />
                 </View>
 
-                <TextInput
-                    value={question}
-                    style={styles.input}
-                    onChangeText={(text) => this.setState({ question: text })} />
-
-                <View style={styles.centerItems}>
+                <View>
                     <Text style={styles.text}>Answer</Text>
+
+                    <TextInput
+                        value={answer}
+                        style={styles.input}
+                        onChangeText={(text) => this.setState({ answer: text })} />
                 </View>
 
-                <TextInput
-                    value={answer}
-                    style={styles.input}
-                    onChangeText={(text) => this.setState({ answer: text })} />
-
-                <ThumbButtons
-                    onPressOne={this.onPress}
-                    textOne={'Add Card'}
-                    hideButtonTwo={true} />
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={this.onPress}>
+                    <Text style={{ color: white, textAlign: 'center', fontSize: 16 }} > Add Card </Text>
+                </TouchableOpacity>
             </KeyboardAvoidingView>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    centerStretch: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'stretch',
-    },
     centerItems: {
         justifyContent: 'center',
         alignItems: 'center',
     },
     text: {
         color: darkGray,
-        fontSize: 24,
-        alignSelf: 'center',
+        fontSize: 21,
     },
     input: {
-        height: 60,
-        marginLeft: 1,
-        marginRight: 1,
-        fontSize: 30,
-        borderTopWidth: 1,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderBottomWidth: 1,
+        height: 50,
+        marginTop: 5,
+        fontSize: 18,
+        borderWidth: 1,
         borderColor: gray,
+        borderRadius: 5,
+        paddingLeft: 10,
+        paddingRight: 10,
     },
+    button: {
+        backgroundColor: blue,
+        padding: 10,
+        borderRadius: 5,
+        marginTop: 20,
+    },
+    boxQuestion: {
+        marginTop: 15,
+        marginBottom: 15,
+    }
 })
 
 export default AddCard
